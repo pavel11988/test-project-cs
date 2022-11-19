@@ -19,9 +19,12 @@ module.exports = {
         background_orange: "#DA6A20",
         background_black: "#000000",
         //
-        border_orange: "rgba(14, 9, 0, 0.24)",
+        border_orange: "#DA6A20",
         border_white: "#FFFFFF",
+        border_gray: "#d6d6d6",
         //
+        button_primary_orange: "#DA6A20",
+        button_color_transparent: "rgba(255, 255, 255, 0.002)",
       },
     },
   },
