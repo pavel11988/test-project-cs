@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Button from "./Button";
 import teams from "../assets/images/teams";
 
