@@ -22,6 +22,8 @@ module.exports = {
         background_primary_light: "rgba(255, 255, 255, 0.1)",
         background_orange_gradient:
           "linear-gradient(182.61deg, #DA6A20 62.95%, rgba(218, 106, 32, 0) 97.82%)",
+        background_orange_gradientt:
+          "linear-gradient(0deg, rgba(218,8,204,1) 0%, rgba(255,174,0,0) 100%);",
         //
         border_orange: "#DA6A20",
         border_white: "#FFFFFF",

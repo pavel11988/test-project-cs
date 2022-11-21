@@ -19,52 +19,54 @@ interface IRenderAboutProps {
 const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
   if (category !== "radio") return <h3>No data</h3>;
   return (
-    <div className="flex relative h-[810px] overflow-scroll w-[392px] ">
+    <div className="relative h-[810px] w-[392px]">
       <Image
-        className="absolute top-[-1px] left-[-1px]"
+        className="absolute  top-[-2px] left-[-2px]"
         src={require("../assets/images//about-list-bg.svg")}
         alt="image-bg-top"
         width={433}
         height={41}
       />
-      <ul className="flex flex-wrap list-none mt-[80px]">
-        {images &&
-          images.map((image) => {
-            if (images.indexOf(image) % 2 !== 0) return;
-            const { src, id, width, height } = image;
-            return (
-              <li key={id} className="first:mt-[84px] mt-[18px] ]">
-                <Image
-                  src={require(`../assets/images/about/${category}/${src}`)}
-                  width={width}
-                  height={height}
-                  alt={`${category}/${src}_logo`}
-                />
-              </li>
-            );
-          })}
-      </ul>
+      <div className="flex h-[810px] overflow-scroll">
+        <ul className="flex flex-wrap list-none mt-[10px] ">
+          {images &&
+            images.map((image) => {
+              if (images.indexOf(image) % 2 !== 0) return;
+              const { src, id, width, height } = image;
+              return (
+                <li key={id} className="first:mt-[84px] mb-[25px]">
+                  <Image
+                    src={require(`../assets/images/about/${category}/${src}`)}
+                    width={width}
+                    height={height}
+                    alt={`${category}/${src}_logo`}
+                  />
+                </li>
+              );
+            })}
+        </ul>
 
-      <ul className=" flex flex-wrap list-none">
-        {images &&
-          images.map((image) => {
-            if (images.indexOf(image) % 2 === 0) return;
-            const { src, id, width, height } = image;
-            return (
-              <li key={id} className="first:mt-[84px]]">
-                <Image
-                  src={require(`../assets/images/about/${category}/${src}`)}
-                  width={width}
-                  height={height}
-                  alt={`${category}/${src}_logo`}
-                />
-              </li>
-            );
-          })}
-      </ul>
+        <ul className=" flex flex-wrap list-none">
+          {images &&
+            images.map((image) => {
+              if (images.indexOf(image) % 2 === 0) return;
+              const { src, id, width, height } = image;
+              return (
+                <li key={id} className="">
+                  <Image
+                    src={require(`../assets/images/about/${category}/${src}`)}
+                    width={width}
+                    height={height}
+                    alt={`${category}/${src}_logo`}
+                  />
+                </li>
+              );
+            })}
+        </ul>
+      </div>
 
       <Image
-        className="absolute bottom-[0px] right-[0px] rotate-180 "
+        className="absolute bottom-[-2px] left-[-2px] rotate-180 "
         src={require("../assets/images/about-list-bg.svg")}
         alt="image-bg-bottom"
         width={433}
