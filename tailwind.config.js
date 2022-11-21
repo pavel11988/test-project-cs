@@ -3,6 +3,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./components/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -18,6 +19,9 @@ module.exports = {
         background_white: "#FFFFFF",
         background_orange: "#DA6A20",
         background_black: "#000000",
+        background_primary_light: "rgba(255, 255, 255, 0.1)",
+        background_orange_gradient:
+          "linear-gradient(182.61deg, #DA6A20 62.95%, rgba(218, 106, 32, 0) 97.82%)",
         //
         border_orange: "#DA6A20",
         border_white: "#FFFFFF",
