@@ -4,16 +4,16 @@ import Button from "./Button";
 const Header = () => {
   return (
     <header className="bg-background_black flex justify-center">
-      <div className="h-[72px] w-[1511px] pl-[34px] pr-[63px] pt-[10px] pb-[10px] flex items-center">
+      <div className="h-20 w-378 pl-8 pr-16 px-2.5 flex items-center">
         <Link
           href="/#"
-          className="mr-[346px] uppercase text-text_white text-[32px] font-extrabold "
+          className="mr-80 uppercase text-text_white text-3xl font-extrabold "
         >
           Test site
         </Link>
         <Link
           href="/#"
-          className="mr-[400px] text-text_white font-normal  hover:opacity-50 duration-200"
+          className="mr-96 text-text_white font-normal  hover:opacity-50 duration-200"
         >
           Learn more
         </Link>
@@ -21,7 +21,7 @@ const Header = () => {
         <div className="font-normal text-text_white flex justify-center items-center">
           <Link
             href="/login"
-            className="mr-[32px] text-[18px] hover:opacity-50 duration-200"
+            className="mr-8 text-lg hover:opacity-50 duration-200"
           >
             Login
           </Link>
@@ -30,14 +30,14 @@ const Header = () => {
             text={"Create Account"}
             href={"/register"}
             styles={
-              "w-[145px] h-[46px] mr-[32px] text-[15px] leading-[20px] bg-background_orange rounded-full flex justify-center items-center hover:opacity-50 duration-200"
+              "w-36 h-11 mr-8 text-base bg-background_orange rounded-full flex justify-center items-center hover:opacity-50 duration-200"
             }
           />
           <Button
             text={"Main site"}
             href={"/#"}
             styles={
-              "w-[123px] h-[46px] text-[16px] flex justify-center border-[1px] border-white rounded-full items-center hover:opacity-50 duration-200"
+              "w-32 h-11 text-base flex justify-center border-1 border-white rounded-full items-center hover:opacity-50 duration-200"
             }
           />
         </div>

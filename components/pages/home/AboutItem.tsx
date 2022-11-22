@@ -16,7 +16,7 @@ const AboutItem = ({
   const checked = checkItem === name;
   return (
     <div
-      className={`w-[506px] h-[136px] pt-[24px] pl-[24px] pb-[28px] pr-[24px] rounded-l-xl  ${
+      className={`h-32 pt-6 px-6 pb-7 rounded-l-xl  ${
         checked ? "bg-background_primary_light" : "background_orange"
       }`}
     >
@@ -25,12 +25,12 @@ const AboutItem = ({
           type="radio"
           name={name}
           value="email"
-          checked={checkItem === name}
+          defaultChecked={checkItem === name}
           onClick={() => setCheckItem(name)}
           className="hidden"
         />
-        <p className="text-[18px] text-text_white">{title}</p>
-        <p className="text-[14px] text-text_white">{description}</p>
+        <p className="text-lg text-text_white">{title}</p>
+        <p className="text-sm text-text_white">{description}</p>
       </label>
     </div>
   );

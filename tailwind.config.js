@@ -31,6 +31,7 @@ module.exports = {
         //
         button_primary_orange: "#DA6A20",
         button_color_transparent: "rgba(255, 255, 255, 0.002)",
+        //
       },
     },
   },
