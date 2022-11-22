@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Button from "../../Button";
-import teams from "../../../assets/images/teams";
+import { useEffect, useState } from "react";
 
 type team = {
   id: string;
@@ -17,22 +17,38 @@ interface IRenderLogosProps {
 const RenderLogos = ({ images }: IRenderLogosProps) => {
   return (
     <ul className="flex justify-between pl-20">
-      {images.map(({ src, company, id, width, height }) => (
-        <li key={id}>
-          <Image
-            src={require(`/assets/images/teams/${src}`)}
-            width={width}
-            height={height}
-            alt={`${company}_logo`}
-          />
-        </li>
-      ))}
+      {images &&
+        images.length !== 0 &&
+        images.map(({ src, company, id, width, height }) => (
+          <li key={id}>
+            <Image
+              src={src}
+              width={width}
+              height={height}
+              alt={`${company}_logo`}
+            />
+          </li>
+        ))}
     </ul>
   );
 };
 
 const Hero = () => {
-  console.log(teams);
+  const [images, setImages] = useState([]);
+
+  const fetchImages = async () => {
+    const response = await fetch("api/hero/teams");
+    const newImages = await response.json();
+    console.log(newImages);
+    setImages(newImages.data);
+  };
+
+  useEffect(() => {
+    // if (images.length === 0) {
+    //   fetchImages();
+    // }
+  }, [images]);
+
   return (
     <main className="flex justify-center">
       <div className=" w-3/4 pt-16 pb-16 flex-col">
@@ -75,7 +91,7 @@ const Hero = () => {
           <p className="text-base text-center leading-7 mb-8">
             Trusted by teams of all sizes
           </p>
-          <RenderLogos images={teams} />
+          <RenderLogos images={images} />
         </div>
       </div>
     </main>

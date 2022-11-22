@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AboutItem from "./AboutItem";
-import { radioImages } from "../../../assets/images/about";
+
 import Image from "next/image";
 
-type image = {
+type Image = {
   id: string;
   company: string;
   src: string;
@@ -11,25 +11,26 @@ type image = {
   height: number;
 };
 
-interface IRenderAboutProps {
-  images: image[];
+interface RenderAboutProps {
+  images: Image[] | [];
   category: string;
 }
-
-const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
+//
+const RenderAboutImages = ({ images, category }: RenderAboutProps) => {
   if (category !== "radio") return <h3>No data</h3>;
   return (
     <>
       <div className="flex h-max overflow-scroll">
         <ul className="flex flex-wrap list-none mt-2.5 ">
           {images &&
+            images.length !== 0 &&
             images.map((image) => {
               if (images.indexOf(image) % 2 !== 0) return;
               const { src, id, width, height } = image;
               return (
                 <li key={id} className="first:mt-20 mb-5">
                   <Image
-                    src={require(`/assets/images/about/${category}/${src}`)}
+                    src={src}
                     width={width}
                     height={height}
                     alt={`${category}/${src}_logo`}
@@ -41,13 +42,14 @@ const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
 
         <ul className=" flex flex-wrap list-none">
           {images &&
+            images.length !== 0 &&
             images.map((image) => {
               if (images.indexOf(image) % 2 === 0) return;
               const { src, id, width, height } = image;
               return (
                 <li key={id} className="">
                   <Image
-                    src={require(`/assets/images/about/${category}/${src}`)}
+                    src={src}
                     width={width}
                     height={height}
                     alt={`${category}/${src}_logo`}
@@ -62,7 +64,19 @@ const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
 };
 
 const About = () => {
-  const [checkItem, setCheckItem] = useState("");
+  const [checkItem, setCheckItem] = useState("radio");
+  const [images, setImages] = useState([]);
+
+  const fetchImages = async (checkItem: string) => {
+    const response = await fetch(`api/about/${checkItem}`);
+    const newImages = await response.json();
+    console.log(newImages);
+    setImages(newImages.data);
+  };
+
+  useEffect(() => {
+    fetchImages(checkItem);
+  }, [checkItem]);
 
   return (
     <section className="bg-background_orange">
@@ -119,7 +133,7 @@ const About = () => {
               width={433}
               height={41}
             />
-            <RenderAboutImages images={radioImages} category={checkItem} />
+            <RenderAboutImages images={images} category={checkItem} />
 
             <Image
               className="absolute -bottom-2 left-0 rotate-180 "
