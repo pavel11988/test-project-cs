@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AboutItem from "./AboutItem";
-import { radioImages } from "../assets/images/about";
+import { radioImages } from "../../../assets/images/about";
 import Image from "next/image";
 
 type image = {
@@ -19,24 +19,17 @@ interface IRenderAboutProps {
 const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
   if (category !== "radio") return <h3>No data</h3>;
   return (
-    <div className="relative h-[810px] w-[392px]">
-      <Image
-        className="absolute  top-[-2px] left-[-2px]"
-        src={require("../assets/images//about-list-bg.svg")}
-        alt="image-bg-top"
-        width={433}
-        height={41}
-      />
-      <div className="flex h-[810px] overflow-scroll">
-        <ul className="flex flex-wrap list-none mt-[10px] ">
+    <>
+      <div className="flex h-max overflow-scroll">
+        <ul className="flex flex-wrap list-none mt-2.5 ">
           {images &&
             images.map((image) => {
               if (images.indexOf(image) % 2 !== 0) return;
               const { src, id, width, height } = image;
               return (
-                <li key={id} className="first:mt-[84px] mb-[25px]">
+                <li key={id} className="first:mt-20 mb-5">
                   <Image
-                    src={require(`../assets/images/about/${category}/${src}`)}
+                    src={require(`/assets/images/about/${category}/${src}`)}
                     width={width}
                     height={height}
                     alt={`${category}/${src}_logo`}
@@ -54,7 +47,7 @@ const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
               return (
                 <li key={id} className="">
                   <Image
-                    src={require(`../assets/images/about/${category}/${src}`)}
+                    src={require(`/assets/images/about/${category}/${src}`)}
                     width={width}
                     height={height}
                     alt={`${category}/${src}_logo`}
@@ -64,33 +57,25 @@ const RenderAboutImages = ({ images, category }: IRenderAboutProps) => {
             })}
         </ul>
       </div>
-
-      <Image
-        className="absolute bottom-[-2px] left-[-2px] rotate-180 "
-        src={require("../assets/images/about-list-bg.svg")}
-        alt="image-bg-bottom"
-        width={433}
-        height={41}
-      />
-    </div>
+    </>
   );
 };
 
 const About = () => {
-  const [checkItem, setCheckItem] = useState("radio");
+  const [checkItem, setCheckItem] = useState("");
 
   return (
     <section className="bg-background_orange">
-      <div className="w-[1512px] pt-[76px] pl-[213px] pr-[203px] pb-[48px]">
-        <h2 className="font-medium text-[48px] text-text_white text-center mb-[27px]">
+      <div className="pt-20 pb-12">
+        <h2 className="font-medium text-5xl text-text_white text-center mb-7">
           What does Test Site offer?
         </h2>
-        <p className="font-normal text-[18px] text-text_white text-center mb-[15px]">
+        <p className="font-normal text-lg text-text_white text-center mb-4">
           We’re not just a job site, what makes us stand out are our trade
           focused offerings.
         </p>
-        <div className="flex">
-          <div className="mt-[94px] mr-[113px]">
+        <div className="flex justify-center ">
+          <div className="w-2/7 mt-24 mr-28">
             <AboutItem
               title={"Social"}
               description={
@@ -126,8 +111,24 @@ const About = () => {
               checkItem={checkItem}
             />
           </div>
+          <div className="relative w-96 pt-12 pb-12 overflow-y-scroll">
+            <Image
+              className="absolute -top-10 left-0"
+              src={require("/assets/images/about-list-bg.svg")}
+              alt="image-bg-top"
+              width={433}
+              height={41}
+            />
+            <RenderAboutImages images={radioImages} category={checkItem} />
 
-          <RenderAboutImages images={radioImages} category={checkItem} />
+            <Image
+              className="absolute -bottom-2 left-0 rotate-180 "
+              src={require("/assets/images/about-list-bg.svg")}
+              alt="image-bg-bottom"
+              width={433}
+              height={41}
+            />
+          </div>
         </div>
       </div>
     </section>
