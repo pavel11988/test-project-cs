@@ -1,0 +1,34 @@
+{
+  "home": {
+    "header": {
+      "title": "TEST SITE"
+    },
+    "hero": {
+      "title": "Employment made simple for all trade businesses",
+      "main_text": "Lorem is sum this is sum ipsum, lorem is sum sum sum sum plus one is sum ipsum.",
+      "teams_text": "Trusted by teams of all sizes"
+    },
+    "about": {
+      "title": "What does Test Site offer?",
+      "text": "We’re not just  a job site, what makes us stand out are our trade focused offerings.",
+      "trades": {
+        "social": {
+          "title": "Social",
+          "text": "Direct list all of your job sites directly onto social. We’re digital natives."
+        },
+        "radio": {
+          "title": "Radio",
+          "text": "We partner with the biggest radio advertisers to get you nationwide coverage."
+        },
+        "social_video": {
+          "title": "Social Video",
+          "text": "Direct list all of your job sites directly onto social. We’re digital natives, video video video."
+        },
+        "reporing": {
+          "title": "Reporting",
+          "text": "Weekly, Monthyl reports."
+        }
+      }
+    }
+  }
+}
