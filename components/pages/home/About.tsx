@@ -1,82 +1,36 @@
 import { useEffect, useState } from "react";
 import AboutItem from "./AboutItem";
-
 import Image from "next/image";
+import HeroGallery from "./HeroGallery";
+import AboutGallery from "./AboutGallery";
 
-type Image = {
-  id: string;
-  company: string;
-  src: string;
-  width: number;
-  height: number;
-};
+// interface Image {
+//   id: string;
+//   company: string;
+//   src: string;
+//   width: number;
+//   height: number;
+// }
 
 interface RenderAboutProps {
-  images: Image[] | [];
+  // images: Image[];
   category: string;
 }
-//
-const RenderAboutImages = ({ images, category }: RenderAboutProps) => {
-  if (category !== "radio") return <h3>No data</h3>;
-  return (
-    <>
-      <div className="flex h-max overflow-scroll">
-        <ul className="flex flex-wrap list-none mt-2.5 ">
-          {images &&
-            images.length !== 0 &&
-            images.map((image) => {
-              if (images.indexOf(image) % 2 !== 0) return;
-              const { src, id, width, height } = image;
-              return (
-                <li key={id} className="first:mt-20 mb-5">
-                  <Image
-                    src={src}
-                    width={width}
-                    height={height}
-                    alt={`${category}/${src}_logo`}
-                  />
-                </li>
-              );
-            })}
-        </ul>
-
-        <ul className=" flex flex-wrap list-none">
-          {images &&
-            images.length !== 0 &&
-            images.map((image) => {
-              if (images.indexOf(image) % 2 === 0) return;
-              const { src, id, width, height } = image;
-              return (
-                <li key={id} className="">
-                  <Image
-                    src={src}
-                    width={width}
-                    height={height}
-                    alt={`${category}/${src}_logo`}
-                  />
-                </li>
-              );
-            })}
-        </ul>
-      </div>
-    </>
-  );
-};
 
 const About = () => {
   const [checkItem, setCheckItem] = useState("radio");
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
-  const fetchImages = async (checkItem: string) => {
-    const response = await fetch(`api/about/${checkItem}`);
-    const newImages = await response.json();
-    console.log(newImages);
-    setImages(newImages.data);
-  };
+  // const fetchImages = async (checkItem: string) => {
+  // const response = await fetch(`api/about/${checkItem}`);
+  // const newImages = await response.json();
+  // console.log(newImages);
+  // setImages(newImages.data);
+  // };
 
-  useEffect(() => {
-    fetchImages(checkItem);
-  }, [checkItem]);
+  // useEffect(() => {
+  //   fetchImages(checkItem);
+  // }, [checkItem]);
 
   return (
     <section className="bg-background_orange">
@@ -125,19 +79,20 @@ const About = () => {
               checkItem={checkItem}
             />
           </div>
-          <div className="relative w-96 pt-12 pb-12 overflow-y-scroll">
+          <div className="relative w-96">
             <Image
               className="absolute -top-10 left-0"
-              src={require("/assets/images/about-list-bg.svg")}
+              src={"/about-list-bg.svg"}
               alt="image-bg-top"
               width={433}
               height={41}
             />
-            <RenderAboutImages images={images} category={checkItem} />
+
+            <AboutGallery category={checkItem} />
 
             <Image
               className="absolute -bottom-2 left-0 rotate-180 "
-              src={require("/assets/images/about-list-bg.svg")}
+              src={"/about-list-bg.svg"}
               alt="image-bg-bottom"
               width={433}
               height={41}

@@ -1,53 +1,17 @@
 import Image from "next/image";
 import Button from "../../Button";
-import { useEffect, useState } from "react";
-
-type team = {
-  id: string;
-  company: string;
-  src: string;
-  width: number;
-  height: number;
-};
-
-interface IRenderLogosProps {
-  images: team[];
-}
-
-const RenderLogos = ({ images }: IRenderLogosProps) => {
-  return (
-    <ul className="flex justify-between pl-20">
-      {images &&
-        images.length !== 0 &&
-        images.map(({ src, company, id, width, height }) => (
-          <li key={id}>
-            <Image
-              src={src}
-              width={width}
-              height={height}
-              alt={`${company}_logo`}
-            />
-          </li>
-        ))}
-    </ul>
-  );
-};
+// import { useEffect, useState } from "react";
+import HeroGallery from "./HeroGallery";
 
 const Hero = () => {
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
-  const fetchImages = async () => {
-    const response = await fetch("api/hero/teams");
-    const newImages = await response.json();
-    console.log(newImages);
-    setImages(newImages.data);
-  };
-
-  useEffect(() => {
-    // if (images.length === 0) {
-    //   fetchImages();
-    // }
-  }, [images]);
+  // const fetchImages = async () => {
+  //   const response = await fetch("api/hero/teams");
+  //   const newImages = await response.json();
+  //   console.log(newImages);
+  //   setImages(newImages.data);
+  // };
 
   return (
     <main className="flex justify-center">
@@ -57,13 +21,13 @@ const Hero = () => {
           <span className="text-text_orange relative">
             <Image
               className="absolute top-14 right-3"
-              src={require("/assets/images/hero-zigzag.svg")}
+              src={"/hero-zigzag.svg"}
               alt="image-bg"
               width={433}
               height={41}
             />
             made simple
-          </span>{" "}
+          </span>
           for all trade businesses
         </h1>
 
@@ -87,11 +51,11 @@ const Hero = () => {
             }
           />
         </div>
-        <div className="">
+        <div>
           <p className="text-base text-center leading-7 mb-8">
             Trusted by teams of all sizes
           </p>
-          <RenderLogos images={images} />
+          <HeroGallery />
         </div>
       </div>
     </main>
