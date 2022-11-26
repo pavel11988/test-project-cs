@@ -1,7 +1,9 @@
+import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
+import { getStaticProps } from "../pages";
 import Button from "./Button";
 
-const Header = () => {
+const Header = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <header className="bg-background_black flex justify-center">
       <div className="h-20 w-378 pl-8 pr-16 px-2.5 flex items-center">
@@ -9,7 +11,7 @@ const Header = () => {
           href="/#"
           className="mr-80 uppercase text-text_white text-3xl font-extrabold "
         >
-          Test site
+          {data.title}
         </Link>
         <Link
           href="/#"

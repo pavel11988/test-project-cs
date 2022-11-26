@@ -3,78 +3,81 @@ import AboutItem from "./AboutItem";
 import Image from "next/image";
 import HeroGallery from "./HeroGallery";
 import AboutGallery from "./AboutGallery";
-
-// interface Image {
-//   id: string;
-//   company: string;
-//   src: string;
-//   width: number;
-//   height: number;
-// }
+import { getStaticProps } from "../../../pages";
+import { InferGetStaticPropsType } from "next";
+import {
+  AboutLogos,
+  AboutTrades,
+  ImageProps,
+} from "../../../models/data.interface";
 
 interface RenderAboutProps {
-  // images: Image[];
+  images: AboutLogos;
   category: string;
 }
 
-const About = () => {
+export const RenderImages = ({ images, category }: RenderAboutProps) => {
+  if (!category || images[category]?.length === 0) {
+    return <p className="mt-10">No data</p>;
+  }
+
+  const currentImages = images[category];
+
+  return (
+    <ul className="grid grid-cols-2 px-2 [&>*]:m-2 ">
+      {currentImages &&
+        currentImages.length &&
+        currentImages.map((image) => {
+          const { id, company, src, width, height } = image;
+          return (
+            <li key={id}>
+              <Image src={src} alt={company} width={width} height={height} />
+            </li>
+          );
+        })}
+    </ul>
+  );
+};
+
+const About = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [checkItem, setCheckItem] = useState("radio");
-  // const [images, setImages] = useState([]);
-
-  // const fetchImages = async (checkItem: string) => {
-  // const response = await fetch(`api/about/${checkItem}`);
-  // const newImages = await response.json();
-  // console.log(newImages);
-  // setImages(newImages.data);
-  // };
-
-  // useEffect(() => {
-  //   fetchImages(checkItem);
-  // }, [checkItem]);
 
   return (
     <section className="bg-background_orange">
       <div className="pt-20 pb-12">
         <h2 className="font-medium text-5xl text-text_white text-center mb-7">
-          What does Test Site offer?
+          {data.title}
         </h2>
         <p className="font-normal text-lg text-text_white text-center mb-4">
-          We’re not just a job site, what makes us stand out are our trade
-          focused offerings.
+          {data.text}
         </p>
         <div className="flex justify-center ">
           <div className="w-2/7 mt-24 mr-28">
             <AboutItem
-              title={"Social"}
-              description={
-                "Direct list all of your job sites directly onto social. We’redigital natives."
-              }
-              name={"social"}
+              title={data.trades.social.title}
+              description={data.trades.social.text}
+              name={data.trades.social.name}
               setCheckItem={setCheckItem}
               checkItem={checkItem}
             />
             <AboutItem
-              title={"Radio"}
-              description={
-                "We partner with the biggest radio advertisers to get you nationwide coverage."
-              }
-              name={"radio"}
+              title={data.trades.radio.title}
+              description={data.trades.radio.text}
+              name={data.trades.radio.name}
               setCheckItem={setCheckItem}
               checkItem={checkItem}
             />
             <AboutItem
-              title={"Social Video"}
-              description={
-                "Direct list all of your job sites directly onto social. We’re digital natives, video video video."
-              }
-              name={"social_video"}
+              title={data.trades.social_video.title}
+              description={data.trades.social_video.text}
+              name={data.trades.social_video.name}
               setCheckItem={setCheckItem}
               checkItem={checkItem}
             />
             <AboutItem
-              title={"Reporting"}
-              description={"Weekly, Monthyl reports."}
-              name={"reporting"}
+              title={data.trades.reporting.title}
+              description={data.trades.reporting.text}
+              name={data.trades.reporting.name}
               setCheckItem={setCheckItem}
               checkItem={checkItem}
             />
@@ -88,8 +91,7 @@ const About = () => {
               height={41}
             />
 
-            <AboutGallery category={checkItem} />
-
+            <RenderImages images={data.about_logos} category={checkItem} />
             <Image
               className="absolute -bottom-2 left-0 rotate-180 "
               src={"/about-list-bg.svg"}
