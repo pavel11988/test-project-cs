@@ -17,10 +17,6 @@ export type HeroProps = {
 
 export interface AboutLogos {
   [key: string]: ImageProps[] | [] | null;
-  // social: ImageProps[] | null;
-  // radio: ImageProps[] | null;
-  // social_vide: ImageProps[] | null;
-  // reporting: ImageProps[] | null;
 }
 
 export interface AboutProps {

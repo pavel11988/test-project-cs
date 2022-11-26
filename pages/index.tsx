@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   return {
     props: {
-      data: data.home,
+      data: data,
     },
   };
 };
@@ -22,11 +22,12 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { home } = data;
   return (
     <div className="font-inter font-normal">
-      <Header data={data.header} />
-      <Hero data={data.hero} />
-      <About data={data.about} />
+      <Header data={home.header} />
+      <Hero data={home.hero} />
+      <About data={home.about} />
     </div>
   );
 }

@@ -41,7 +41,6 @@ export const RenderImages = ({ images, category }: RenderAboutProps) => {
 
 const About = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [checkItem, setCheckItem] = useState("radio");
-
   return (
     <section className="bg-background_orange">
       <div className="pt-20 pb-12">
