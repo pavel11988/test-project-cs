@@ -1,21 +1,24 @@
-interface IProps {
+import { FC } from "react";
+
+interface AboutItemProps {
   title: string;
-  description: string;
+  text: string;
   name: string;
   setCheckItem: Function;
   checkItem: string;
 }
 
-const AboutItem = ({
+const AboutItem: FC<AboutItemProps> = ({
   title,
-  description,
+  text,
   name,
   checkItem,
   setCheckItem,
-}: IProps) => {
+}) => {
   const checked = checkItem === name;
   return (
     <div
+      onMouseOver={() => setCheckItem(name)}
       className={`h-32 pt-6 px-6 pb-7 rounded-l-xl  ${
         checked ? "bg-background_primary_light" : "background_orange"
       }`}
@@ -26,11 +29,10 @@ const AboutItem = ({
           name={name}
           value="email"
           defaultChecked={checkItem === name}
-          onClick={() => setCheckItem(name)}
           className="hidden"
         />
         <p className="text-lg text-text_white">{title}</p>
-        <p className="text-sm text-text_white">{description}</p>
+        <p className="text-sm text-text_white">{text}</p>
       </label>
     </div>
   );
