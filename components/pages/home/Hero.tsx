@@ -1,8 +1,22 @@
-import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
-import { ImageProps } from "../../../models/data.interface";
-import { getStaticProps } from "../../../pages";
+import { FC } from "react";
 import Button from "../../Button";
+import { v4 as uuidv4 } from "uuid";
+import { motion } from "framer-motion";
+
+export interface ImageProps {
+  company: string;
+  src: string;
+  width: number;
+  height: number;
+}
+
+interface HeroProps {
+  title: string;
+  main_text: string;
+  teams_text: string;
+  teams_logos: ImageProps[] | null | [];
+}
 
 export const RenderImages = ({ images }: any) => {
   return (
@@ -10,41 +24,67 @@ export const RenderImages = ({ images }: any) => {
       {images &&
         images.length &&
         images.map((image: ImageProps) => {
-          const { id, company, src, width, height } = image;
+          const { company, src, width, height } = image;
           return (
-            <li key={id}>
+            <motion.li
+              key={uuidv4()}
+              whileHover={{
+                position: "relative",
+                zIndex: 11,
+                scale: [1, 1.2],
+                transition: {
+                  duration: 0.7,
+                },
+              }}
+              animate={{ opacity: [0, 1] }}
+              transition={{ delay: 1.4 }}
+            >
               <Image src={src} alt={company} width={width} height={height} />
-            </li>
+            </motion.li>
           );
         })}
     </ul>
   );
 };
 
-const Hero = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Hero: FC<HeroProps> = ({ title, main_text, teams_text, teams_logos }) => {
   return (
     <main className="flex justify-center">
-      <div className=" w-3/4 pt-16 pb-16 flex-col">
-        <div>
-          <h1 className="font-medium text-center text-7xl pl-48 pr-44 mb-6">
+      <div className=" w-4/5 pt-16 pb-16 flex-col">
+        <motion.div
+          style={{
+            paddingTop: "40px",
+            paddingBottom: "40px",
+            paddingLeft: "220px",
+            paddingRight: "220px",
+          }}
+          animate={{ opacity: [0, 1] }}
+          transition={{ delay: 0.3 }}
+        >
+          <h1 className="text-7xl">
             Employment{" "}
             <span className="text-text_orange relative">
-              <Image
-                className="absolute top-14 right-3"
-                src={"/hero-zigzag.svg"}
-                alt="image-bg"
-                width={433}
-                height={41}
-              />
+              <motion.span
+                animate={{ opacity: [0, 1] }}
+                transition={{ delay: 1 }}
+              >
+                <Image
+                  className="absolute top-14 right-3 "
+                  src={"/hero-zigzag.svg"}
+                  alt="image-bg"
+                  width={433}
+                  height={41}
+                />
+              </motion.span>
               made simple
             </span>{" "}
             for all trade businesses
           </h1>
-
-          <div className="text-center w-2/5 mx-auto">
-            <p className="text-lg leading-8 mb-12">{data.main_text}</p>
-          </div>
+        </motion.div>
+        <div className="text-center w-2/5 mx-auto">
+          <p className="text-lg leading-8 mb-12">{main_text}</p>
         </div>
+
         <div className="flex justify-center mb-[180px]">
           <Button
             text={"Sign Up"}
@@ -62,10 +102,8 @@ const Hero = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           />
         </div>
         <div>
-          <p className="text-base text-center leading-7 mb-8">
-            {data.teams_text}
-          </p>
-          <RenderImages images={data.teams_logos} />
+          <p className="text-base text-center leading-7 mb-8">{teams_text}</p>
+          <RenderImages images={teams_logos} />
         </div>
       </div>
     </main>

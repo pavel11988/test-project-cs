@@ -1,171 +1,159 @@
 {
-  "home": {
-    "header": {
-      "title": "TEST SITE"
+  "hero": {
+    "title": "Employment made simple for all trade businesses",
+    "main_text": "Lorem is sum this is sum ipsum, lorem is sum sum sum sum plus one is sum ipsum.",
+    "teams_text": "Trusted by teams of all sizes",
+    "teams_logos": [
+      {
+        "company": "Automotive",
+        "src": "/hero_automotive.png",
+        "width": 79,
+        "height": 48
+      },
+      {
+        "company": "Carters",
+        "src": "/hero_carters.png",
+        "width": 138,
+        "height": 48
+      },
+      {
+        "company": "Hanlon",
+        "src": "/hero_hanlon.png",
+        "width": 218,
+        "height": 48
+      },
+      {
+        "company": "PlaceMakers",
+        "src": "/hero_placemakers.png",
+        "width": 175,
+        "height": 48
+      },
+      {
+        "company": "Regal",
+        "src": "/hero_regal.png",
+        "width": 155,
+        "height": 48
+      }
+    ]
+  },
+  "about": {
+    "title": "What does Test Site offer?",
+    "text": "We’re not just  a job site, what makes us stand out are our trade focused offerings.",
+    "trades": {
+      "social": {
+        "name": "social",
+        "title": "Social",
+        "text": "Direct list all of your job sites directly onto social. We’re digital natives."
+      },
+      "radio": {
+        "name": "radio",
+        "title": "Radio",
+        "text": "We partner with the biggest radio advertisers to get you nationwide coverage."
+      },
+      "social_video": {
+        "name": "social_video",
+        "title": "Social Video",
+        "text": "Direct list all of your job sites directly onto social. We’re digital natives, video video video."
+      },
+      "reporting": {
+        "name": "reporting",
+        "title": "Reporting",
+        "text": "Weekly, Monthyl reports."
+      }
     },
-    "hero": {
-      "title": "Employment made simple for all trade businesses",
-      "main_text": "Lorem is sum this is sum ipsum, lorem is sum sum sum sum plus one is sum ipsum.",
-      "teams_text": "Trusted by teams of all sizes",
-      "teams_logos": [
+    "about_logos": {
+      "social": [
         {
-          "id": "hero_1",
-          "company": "Automotive",
-          "src": "/hero_automotive.png",
-          "width": 79,
-          "height": 48
+          "company": "telegram",
+          "src": "/social_telegram.png",
+          "width": 168,
+          "height": 168
         },
         {
-          "id": "hero_2",
-          "company": "Carters",
-          "src": "/hero_carters.png",
-          "width": 138,
-          "height": 48
+          "company": "facebook",
+          "src": "/social_facebook.png",
+          "width": 168,
+          "height": 168
         },
         {
-          "id": "hero_3",
-          "company": "Hanlon",
-          "src": "/hero_hanlon.png",
-          "width": 218,
-          "height": 48
+          "company": "instagram",
+          "src": "/social_instagram.png",
+          "width": 168,
+          "height": 168
         },
         {
-          "id": "hero_4",
-          "company": "PlaceMakers",
-          "src": "/hero_placemakers.png",
-          "width": 175,
-          "height": 48
+          "company": "rakuten viber",
+          "src": "/social_viber.png",
+          "width": 168,
+          "height": 168
+        }
+      ],
+      "radio": [
+        {
+          "company": "Gold",
+          "src": "/radio_gold.png",
+          "width": 168,
+          "height": 168
         },
         {
-          "id": "hero_5",
-          "company": "Regal",
-          "src": "/hero_regal.png",
-          "width": 155,
-          "height": 48
+          "company": "Huaraki",
+          "src": "/radio_huaraki.png",
+          "width": 168,
+          "height": 168
+        },
+        {
+          "company": "Newstalk",
+          "src": "/radio_newstalk.png",
+          "width": 168,
+          "height": 168
+        },
+        {
+          "company": "ZM",
+          "src": "/radio_zm.png",
+          "width": 168,
+          "height": 168
+        },
+        {
+          "company": "Hits",
+          "src": "/radio_hits.png",
+          "width": 168,
+          "height": 168
+        },
+        {
+          "company": "Coast",
+          "src": "/radio_coast.png",
+          "width": 168,
+          "height": 168
+        },
+        {
+          "company": "flava",
+          "src": "/radio_flava.png",
+          "width": 168,
+          "height": 168
+        },
+        {
+          "company": "iHeart",
+          "src": "/radio_iheart.png",
+          "width": 168,
+          "height": 168
+        }
+      ],
+      "social_video": [
+        {
+          "company": "YouTube",
+          "src": "/social_video_youtube.png",
+          "width": 168,
+          "height": 168
+        }
+      ],
+      "reporting": [
+        {
+          "company": "Test",
+          "src": "/reporting_test.png",
+          "width": 168,
+          "height": 168
         }
       ]
-    },
-    "about": {
-      "title": "What does Test Site offer?",
-      "text": "We’re not just  a job site, what makes us stand out are our trade focused offerings.",
-      "trades": {
-        "social": {
-          "id": "trade_1",
-          "name": "social",
-          "title": "Social",
-          "text": "Direct list all of your job sites directly onto social. We’re digital natives."
-        },
-        "radio": {
-          "id": "trade_2",
-          "name": "radio",
-          "title": "Radio",
-          "text": "We partner with the biggest radio advertisers to get you nationwide coverage."
-        },
-        "social_video": {
-          "id": "trade_3",
-          "name": "social_video",
-          "title": "Social Video",
-          "text": "Direct list all of your job sites directly onto social. We’re digital natives, video video video."
-        },
-        "reporting": {
-          "id": "trade_4",
-          "name": "reporting",
-          "title": "Reporting",
-          "text": "Weekly, Monthyl reports."
-        }
-      },
-      "about_logos": {
-        "social": [
-          {
-            "id": "about_social_1",
-            "company": "telegram",
-            "src": "/social_telegram.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_2",
-            "company": "facebook",
-            "src": "/social_facebook.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_3",
-            "company": "instagram",
-            "src": "/social_instagram.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_4",
-            "company": "rakuten viber",
-            "src": "/social_viber.png",
-            "width": 168,
-            "height": 168
-          }
-        ],
-        "radio": [
-          {
-            "id": "about_social_1",
-            "company": "Gold",
-            "src": "/radio_gold.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_2",
-            "company": "Huaraki",
-            "src": "/radio_huaraki.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_3",
-            "company": "Newstalk",
-            "src": "/radio_newstalk.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_4",
-            "company": "ZM",
-            "src": "/radio_zm.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_5",
-            "company": "Hits",
-            "src": "/radio_hits.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_6",
-            "company": "Coast",
-            "src": "/radio_coast.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_7",
-            "company": "flava",
-            "src": "/radio_flava.png",
-            "width": 168,
-            "height": 168
-          },
-          {
-            "id": "about_social_8",
-            "company": "/radio_iHeart",
-            "src": "/radio_iheart.png",
-            "width": 168,
-            "height": 168
-          }
-        ],
-        "social_vide": [],
-        "reporting": []
-      }
     }
   }
 }
