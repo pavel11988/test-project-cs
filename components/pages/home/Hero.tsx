@@ -15,10 +15,14 @@ interface HeroProps {
   title: string;
   main_text: string;
   teams_text: string;
-  teams_logos: ImageProps[] | null | [];
+  teams_logos: ImageProps[];
 }
 
-export const RenderImages = ({ images }: any) => {
+interface RenderAboutProps {
+  images: ImageProps[];
+}
+
+export const RenderImages = ({ images }: RenderAboutProps) => {
   return (
     <ul className="flex justify-around">
       {images &&

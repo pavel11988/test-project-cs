@@ -16,13 +16,13 @@ const gradientStyles = css`
   position: absolute;
   width: 100%;
   height: 30px;
-  z-index: 10;
+  z-index: 20;
 `;
 
 const AboutContainer = styled.div`
   position: relative;
   margin-top: 30px;
-  overflow: hidden;
+  overflow-y: hidden;
 
   &::before {
     ${gradientStyles}
@@ -46,7 +46,10 @@ const AboutContainer = styled.div`
   }
 `;
 
-const List = styled.ul``;
+const List = styled.ul`
+  height: 700px;
+  overflow: hidden;
+`;
 
 interface AboutGalleryProps {
   images: ImageProps[];
