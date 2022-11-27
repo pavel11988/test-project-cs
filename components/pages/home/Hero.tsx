@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
 import Button from "../../Button";
-import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 
 export interface ImageProps {
@@ -25,28 +24,26 @@ interface RenderAboutProps {
 export const RenderImages = ({ images }: RenderAboutProps) => {
   return (
     <ul className="flex justify-around">
-      {images &&
-        images.length &&
-        images.map((image: ImageProps) => {
-          const { company, src, width, height } = image;
-          return (
-            <motion.li
-              key={uuidv4()}
-              whileHover={{
-                position: "relative",
-                zIndex: 11,
-                scale: [1, 1.2],
-                transition: {
-                  duration: 0.7,
-                },
-              }}
-              animate={{ opacity: [0, 1] }}
-              transition={{ delay: 1.4 }}
-            >
-              <Image src={src} alt={company} width={width} height={height} />
-            </motion.li>
-          );
-        })}
+      {images.map((image: ImageProps, i) => {
+        const { company, src, width, height } = image;
+        return (
+          <motion.li
+            key={i}
+            whileHover={{
+              position: "relative",
+              zIndex: 11,
+              scale: [1, 1.2],
+              transition: {
+                duration: 0.7,
+              },
+            }}
+            animate={{ opacity: [0, 1] }}
+            transition={{ delay: 1.4 }}
+          >
+            <Image src={src} alt={company} width={width} height={height} />
+          </motion.li>
+        );
+      })}
     </ul>
   );
 };
@@ -54,36 +51,33 @@ export const RenderImages = ({ images }: RenderAboutProps) => {
 const Hero: FC<HeroProps> = ({ title, main_text, teams_text, teams_logos }) => {
   return (
     <main className="flex justify-center">
-      <div className=" w-4/5 pt-16 pb-16 flex-col">
+      <div className="pt-16 pb-16 flex-col w-3/4">
         <motion.div
-          style={{
-            paddingTop: "40px",
-            paddingBottom: "40px",
-            paddingLeft: "220px",
-            paddingRight: "220px",
-          }}
+          className=""
           animate={{ opacity: [0, 1] }}
           transition={{ delay: 0.3 }}
         >
-          <h1 className="text-7xl">
-            Employment{" "}
-            <span className="text-text_orange relative">
-              <motion.span
-                animate={{ opacity: [0, 1] }}
-                transition={{ delay: 1 }}
-              >
-                <Image
-                  className="absolute top-14 right-3 "
-                  src={"/hero-zigzag.svg"}
-                  alt="image-bg"
-                  width={433}
-                  height={41}
-                />
-              </motion.span>
-              made simple
-            </span>{" "}
-            for all trade businesses
-          </h1>
+          <div className="py-10 mx-auto hero-title-container">
+            <h1 className="text-7xl">
+              Employment{" "}
+              <span className="text-text_orange relative">
+                <motion.span
+                  animate={{ opacity: [0, 1] }}
+                  transition={{ delay: 1 }}
+                >
+                  <Image
+                    className="absolute top-14 right-3 "
+                    src={"/hero-zigzag.svg"}
+                    alt="image-bg"
+                    width={433}
+                    height={41}
+                  />
+                </motion.span>
+                made simple
+              </span>{" "}
+              for all trade businesses
+            </h1>
+          </div>
         </motion.div>
         <div className="text-center w-2/5 mx-auto">
           <p className="text-lg leading-8 mb-12">{main_text}</p>

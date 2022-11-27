@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
-import styled, { css } from "styled-components";
 
 interface ImageProps {
   company: string;
@@ -11,48 +9,10 @@ interface ImageProps {
   height: number;
 }
 
-const gradientStyles = css`
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 30px;
-  z-index: 20;
-`;
-
-const AboutContainer = styled(motion.div)`
-  position: relative;
-  margin-top: 30px;
-  overflow: hidden;
-
-  &::before {
-    ${gradientStyles}
-    top:0;
-    background: linear-gradient(
-      0deg,
-      rgba(2, 0, 36, 0) 0%,
-      rgba(218, 106, 32, 1) 45%,
-      rgba(218, 106, 32, 1) 100%
-    );
-  }
-  &::after {
-    ${gradientStyles}
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(2, 0, 36, 0) 0%,
-      rgba(218, 106, 32, 1) 45%,
-      rgba(218, 106, 32, 1) 100%
-    );
-  }
-`;
-
-const List = styled(motion.ul)`
-  height: 700px;
-`;
-
 interface AboutGalleryProps {
   images: ImageProps[];
 }
+
 const separateArray = (images: ImageProps[]) => {
   if (images.length > 8) images = images.slice(0, 8);
   else if (images.length < 8) {
@@ -68,13 +28,13 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
   const [leftArray, rightArray] = separateArray(images);
 
   return (
-    <AboutContainer style={{ display: "flex" }}>
-      <List>
+    <motion.div className="flex images-container">
+      <motion.ul className="images-list">
         {leftArray.map((image, i) => {
           const { company, src, width, height } = image;
           return (
             <motion.li
-              key={uuidv4()}
+              key={i}
               animate={{ y: 50 }}
               transition={{ delay: 0 }}
               whileHover={{
@@ -89,7 +49,7 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
               }}
             >
               <Image
-                style={{ margin: "20px" }}
+                className={"m-5"}
                 src={src}
                 alt={company}
                 width={width}
@@ -98,13 +58,13 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
             </motion.li>
           );
         })}
-      </List>
-      <List>
+      </motion.ul>
+      <motion.ul>
         {rightArray.map((image, i) => {
           const { company, src, width, height } = image;
           return (
             <motion.li
-              key={uuidv4()}
+              key={i}
               animate={{ y: -50 }}
               transition={{ delay: 0 }}
               whileHover={{
@@ -119,7 +79,7 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
               }}
             >
               <Image
-                style={{ margin: "20px" }}
+                className={"m-5"}
                 src={src}
                 alt={company}
                 width={width}
@@ -128,8 +88,8 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
             </motion.li>
           );
         })}
-      </List>
-    </AboutContainer>
+      </motion.ul>
+    </motion.div>
   );
 };
 
