@@ -19,7 +19,7 @@ const AboutItem: FC<AboutItemProps> = ({
   return (
     <div
       onMouseOver={() => setCheckItem(name)}
-      className={`h-32 pt-6 px-6 pb-7 rounded-l-xl  ${
+      className={`pt-6 pl-6 pb-7 rounded-l-xl  ${
         checked ? "bg-background_primary_light" : "background_orange"
       }`}
     >
@@ -31,8 +31,10 @@ const AboutItem: FC<AboutItemProps> = ({
           defaultChecked={checkItem === name}
           className="hidden"
         />
-        <p className="text-lg text-text_white">{title}</p>
-        <p className="text-sm text-text_white">{text}</p>
+        <div className="w-3/4">
+          <p className="text-lg text-text_white mb-4 ">{title}</p>
+          <p className="text-sm text-text_white leading-6">{text}</p>
+        </div>
       </label>
     </div>
   );
