@@ -68,14 +68,14 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
               key={i}
               animate={{ y: 50 }}
               transition={{ delay: 0 }}
-              className={"relative"}
+              className={`relative ${id === hovered ? "z-[30]" : "z-[10]"}`}
             >
               <motion.img
                 animate={
                   id === hovered
                     ? {
                         position: "relative",
-                        zIndex: 25,
+                        zIndex: 100,
                         y: i > 1 ? -100 : 120,
                         x: 30,
                         scale: [1, 1.5],
@@ -105,6 +105,7 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
               key={i}
               animate={{ y: -50 }}
               transition={{ delay: 0 }}
+              className={`relative ${id === hovered ? "z-[30]" : "z-[10]"}`}
             >
               <motion.img
                 animate={
