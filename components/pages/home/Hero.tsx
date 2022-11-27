@@ -57,7 +57,7 @@ const Hero: FC<HeroProps> = ({ title, main_text, teams_text, teams_logos }) => {
           animate={{ opacity: [0, 1] }}
           transition={{ delay: 0.3 }}
         >
-          <div className="py-10 mx-auto hero-title-container">
+          <div className="py-10 mx-auto hero-title-container text-center">
             <h1 className="text-7xl">
               Employment{" "}
               <span className="text-text_orange relative">
