@@ -19,10 +19,10 @@ const gradientStyles = css`
   z-index: 20;
 `;
 
-const AboutContainer = styled.div`
+const AboutContainer = styled(motion.div)`
   position: relative;
   margin-top: 30px;
-  overflow-y: hidden;
+  overflow: hidden;
 
   &::before {
     ${gradientStyles}
@@ -46,9 +46,8 @@ const AboutContainer = styled.div`
   }
 `;
 
-const List = styled.ul`
+const List = styled(motion.ul)`
   height: 700px;
-  overflow: hidden;
 `;
 
 interface AboutGalleryProps {
@@ -78,6 +77,16 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
               key={uuidv4()}
               animate={{ y: 50 }}
               transition={{ delay: 0 }}
+              whileHover={{
+                position: "relative",
+                zIndex: 11,
+                y: i > 1 ? -100 : 120,
+                x: 30,
+                scale: [1, 1.5],
+                transition: {
+                  duration: 0.2,
+                },
+              }}
             >
               <Image
                 style={{ margin: "20px" }}
@@ -98,6 +107,16 @@ const AboutGallery: FC<AboutGalleryProps> = ({ images }) => {
               key={uuidv4()}
               animate={{ y: -50 }}
               transition={{ delay: 0 }}
+              whileHover={{
+                position: "relative",
+                zIndex: 11,
+                y: i > 1 ? -100 : 120,
+                x: -30,
+                scale: [1, 1.5],
+                transition: {
+                  duration: 0.2,
+                },
+              }}
             >
               <Image
                 style={{ margin: "20px" }}
